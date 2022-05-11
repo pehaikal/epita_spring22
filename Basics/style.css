@@ -1,0 +1,21 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: wheat;
+}
+
+table thead {
+    background: navy;
+}
+
+.bg_navy {
+    background: navy;
+}
+
+table thead.bg_navy {
+    background: green;
+}
+
+#fisrt_table {
+    color: red;
+}

@@ -1,0 +1,22 @@
+.square {
+    width: 750px;
+    height: 750px;
+    background: red;
+    border: 15px solid black;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+.circle {
+    width: 200px;
+    height: 200px;
+    background: white;
+    border: 15px solid yellow;
+    border-radius: 50%;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
