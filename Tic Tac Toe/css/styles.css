@@ -39,7 +39,7 @@ font-size: 40px;
     gap: 10xp;
 }
 
-.cell {
+.grid .cell {
     display: flex;
     border: 3px solid grey;
     text-align: center;
@@ -51,14 +51,7 @@ font-size: 40px;
     font-size: 60px;
 }
 
-.game--restart {
-    background-color: lawngreen;
-    width: 200px;
-    height: 50px;
-    font-size: 25px;
-    display: grid;
-    margin: 20px auto;
-    color: black;
-    box-shadow: 2px 2px 2px 2px #d86c23;
-    border: 2px solid #d86c23;
+.grid .cell:hover {
+    background-color: yellow;
+    cursor: pointer;
 }
