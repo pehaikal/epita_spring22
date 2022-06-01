@@ -22,7 +22,9 @@ a1.addEventListener('click', function () {
 })*/
 
 let current_player = 0
-let winner = false
+
+winner = false
+
 const elements = ['X', 'O']
 
 const validationLine = (el1, el2, el3) => {
@@ -30,7 +32,7 @@ const validationLine = (el1, el2, el3) => {
 
     console.log("valid", el1.innerHTML, el2.innerHTML, el3.innerHTML)
     
-    if (el1.innerHTML != '' && el2.innerHTML != '' && el3.innerHTML != '') {
+    if (el1.innerHTML != '' && el2.innerHTML != '' && el3.innerHTML != '' && el1.innerHTML == el2.innerHTML && el2.innerHTML == el3.innerHTML) {
         console.log('valid')
         valid = true
     }
@@ -39,36 +41,93 @@ const validationLine = (el1, el2, el3) => {
 }
 
 const cells = document.querySelectorAll('.cell')
+
 cells.forEach(cell => {
+
     cell.addEventListener('click', (e) => {
+
         // console.log(e)
         console.log(e.target.innerHTML)
-        if (e.target.innerHTML == '') {
-            // Put the element of the player in the cell
-            e.target.innerHTML = elements[current_player]
 
-            // Check if there is a winner or let the second player plays
-            if (validationLine(a1, a2, a3) ) {
-                console.log('winner !')
-                winner = true
-            }
+        if (winner == false) {
+            if (e.target.innerHTML == '') {
 
-            // show the message if we have a winner
-            if (winner) {
-               let msg = document.querySelector('#msg')
-               msg.innerHTML = 'The winner is Player ' + (current_player+1)
-               msg.style.display = "block"
-            }
+                // Put the element of the player in the cell
+                e.target.innerHTML = elements[current_player]
 
-            // Switch of players
-            if (current_player == 0) {
-                current_player = 1
+                // Check if there is a winner or let the second player plays
+                if (validationLine(a1, a2, a3) ) {
+                    console.log('winner !')
+                    winner = true
+                }
+            
+                else if(validationLine(b1, b2, b3)) {
+                    console.log('winner !')
+                    winner = true
+                }
+
+                else if(validationLine(c1, c2, c3)) {
+                    console.log('winner !')
+                    winner = true
+                }
+
+                else if(validationLine(a1, b1, c1)) {
+                    console.log('winner !')
+                    winner = true
+                }
+
+                else if(validationLine(a2, b2, c2)) {
+                    console.log('winner !')
+                    winner = true
+                }
+
+                else if(validationLine(a3, b3, c3)) {
+                    console.log('winner !')
+                    winner = true
+                }
+
+                else if(validationLine(a1, b2, c3)) {
+                    console.log('winner !')
+                    winner = true
+                }
+
+                else if(validationLine(a3, b2, c1)) {
+                    console.log('winner !');
+                    winner = true
+                }
+
+                // show the message if we have a winner
+                if (winner) {
+                let msg = document.querySelector('#msg')
+                msg.innerHTML = 'The winner is Player ' + (current_player + 1)
+                msg.style.display = "block"
+
+                let score = parseInt(document.querySelector('#player' + (current_player + 1) + ' .score').innerHTML)
+                    score++
+                    document.querySelector('#player' + (current_player + 1) + ' .score').innerHTML = score
+                }
+
+                // Switch of players
+                if (current_player == 0) {
+                    current_player = 1
+                } else {
+                    current_player = 0
+                }
+
             } else {
-                current_player = 0
+                // When there is a cliock on a cell already used
+                alert('Someone already play here !')
             }
-        } else {
-            // When there is a cliock on a cell already used
-            alert('Someone already play here !')
         }
     })
 })
+
+function restart() {
+    cells.forEach(cell => {
+        cell.innerHTML = ''
+        current_player = 0
+    })
+    msg.style.display = "none"
+    winner = false
+}
+
