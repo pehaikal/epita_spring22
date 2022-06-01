@@ -1,46 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TicTacToe</title>
-    <link rel="stylesheet" href="./css/styles.css">
-</head>
-<body>
-    <div class="players">
-        <div id="player1" class="player">
-            <div class="image">
-                <img src="https://dm0qx8t0i9gc9.cloudfront.net/thumbnails/image/rDtN98Qoishumwih/smiley-vector-illustration-japanese-nunchak-ninja_mJV6p-_thumb.jpg" alt="picture of player">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>TIC TAC TOE</title>
+        <link rel="stylesheet" href="./css/styles.css">
+    </head>
+    <body>
+        <div class="players">
+            <div id="player1" class="player">
+                <div class="image">
+                    <img src="https://dm0qx8t0i9gc9.cloudfront.net/thumbnails/image/rDtN98Qoishumwih/smiley-vector-illustration-japanese-nunchak-ninja_mJV6p-_thumb.jpg" alt="picture of player">
+                </div>
+                <div class="name">X Player 1</div>
+                <div class="score">0</div>
             </div>
-            
-            <div class="name">Player 1</div>
-            <div class="score">0</div>
-            
+            <div id="player2" class="player">
+                <div class="image">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRm-WST6sEAoqQ_McB72gUv2399Gp7oO5EjjFF9N6pW72Nuv9tQrXBQe6oTbo1Lq_Oje78&usqp=CAU" alt="picture of player">
+                </div>
+                <div class="name">O Player 2</div>
+                <div class="score">0</div>
+            </div>
         </div>
 
-        <div id="player2" class="player">
-            <div class="image">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRm-WST6sEAoqQ_McB72gUv2399Gp7oO5EjjFF9N6pW72Nuv9tQrXBQe6oTbo1Lq_Oje78&usqp=CAU" alt="picture of player">
-            </div>
-            
-            <div class="name">Player 2</div>
-            <div class="score">0</div>
+        <div id="msg"></div>
+
+        <div class="grid">
+            <div id="a1" class="cell"></div>
+            <div id="a2" class="cell"></div>
+            <div id="a3" class="cell"></div>
+            <div id="b1" class="cell"></div>
+            <div id="b2" class="cell"></div>
+            <div id="b3" class="cell"></div>
+            <div id="c1" class="cell"></div>
+            <div id="c2" class="cell"></div>
+            <div id="c3" class="cell"></div>
         </div>
-    </div>
 
-    <div class="grid">
-        <div id="a1" class="cell"></div>
-        <div id="a2" class="cell"></div>
-        <div id="a3" class="cell"></div>
-        <div id="a4" class="cell"></div>
-        <div id="a5"  class="cell"></div>
-        <div id="a6" class="cell"></div>
-        <div id="a7" class="cell"></div>
-        <div id="a8" class="cell"></div>
-        <div id="a9" class="cell"></div>
-    </div>
-
-    <script src="./js/main.js"></script>
-</body>
+        <script src="./js/main.js"></script>
+    </body>
 </html>

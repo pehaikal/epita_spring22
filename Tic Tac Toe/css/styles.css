@@ -5,53 +5,65 @@ body {
 }
 
 .players {
+    padding-top: 20px;
     width: 50%;
     margin: auto;
     display: flex;
     justify-content: space-around;
-    border: 2px solid red;
+    /*border: 1px solid red;*/
 }
 
 .players .player {
-    border: 1px solid black;
+    /*border: 1px solid black;*/
     width: 45%;
     text-align: center;
 }
 
 .players .player .image img {
-    height: 180px;
+    height: 150px;
     border-radius: 50%;
 }
 
 .players .player .name {
-font-size: 40px;
+    font-size: 40px;
 }
 
 .players .player .score {
     font-size: 70px;
 }
 
+#msg {
+    border: 1px solid green;
+    background-color: greenyellow;
+    color: green;
+    text-align: center;
+    width: 50%;
+    margin: 2rem auto;
+    padding: 2rem;
+    font-weight: bold;
+    font-size: 2rem;
+    display: none;
+    /*visibility: hidden;*/
+}
+
 .grid {
     width: 50%;
     margin: auto;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 10xp;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
 }
 
 .grid .cell {
     display: flex;
-    border: 3px solid grey;
+    border: 1px solid grey;
     text-align: center;
-    height: 100px;
+    height: 150px;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
-    line-height: 100px;
-    font-size: 60px;
 }
 
 .grid .cell:hover {
-    background-color: yellow;
+    background-color: blanchedalmond;
     cursor: pointer;
 }
