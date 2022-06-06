@@ -15,4 +15,5 @@ tab.push('rtt 3')
 console.log(tab) // OR console.log(tab[0]) OR console.log(tab[1])
 
 tab.splice(1, 2)
+
 console.log(tab)
