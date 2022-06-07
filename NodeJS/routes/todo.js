@@ -2,7 +2,23 @@ const express = require('express');
 
 const Router = express.Router();
 
-const todos = [];
+let todos = [{
+    "id": 1,
+    "label": "label test 1",
+    "isDone": true
+    },
+    
+    {
+    "id": 2,
+    "label": "label test 2",
+    "isDone": true
+    },
+    
+    {
+    "id": 3,
+    "label": "label test 3",
+    "isDone": true
+    }];
 
 /*
 Todo: {
@@ -18,14 +34,6 @@ Router.get('/', (request, response) => {
     let data = request.body;
     console.log(data);
 
-    
-    for(const index = 0; index < todos.length; index++) {
-        todos.push(data[index]);
-    }
-    
-
-    // OR
-
     /*
     data.map((todo) => {
         todos.push(todo);
@@ -33,7 +41,7 @@ Router.get('/', (request, response) => {
     */
 
     // OR
-
+    
     // todos = [...data];
 
     return response.status(200).json(todos);
@@ -42,7 +50,8 @@ Router.get('/', (request, response) => {
 
 // POST /todos
 Router.post('/', (request, response) => {
-    const {todo}  = request.body;
+    const todo  = request.body;
+    
     todos.push(todo)
 
     return response.status(200).json(todo);
@@ -53,6 +62,7 @@ Router.post('/', (request, response) => {
 Router.put('/:index', (request, response) => {
     const {index} = request.params; // OR const index = request.params.index;
     const todo  = request.body;
+    
     todos[index] = todo;
 
     console.log(todo);
@@ -64,14 +74,13 @@ Router.put('/:index', (request, response) => {
 // DELETE /todos
 Router.delete('/:index', (request, response) => {
     const {index} = request.params;
-    const todo  = request.body;
-    todos[index] = todo;
 
-    console.log(todo);
+    console.log(todos);
+
     console.log("------------ deleting -------------");
-    
-    delete todos.splice(index, 1);
-    console.log(todo);
+
+    todos.splice(index, 1);
+    console.log(todos);
 
     return response.status(200).json(todos);
 }) // end of delete
