@@ -1,7 +1,25 @@
 // framework to create API
 const express = require('express');
 const morgan = require('morgan');
+const mongoose = require('mongoose');
+
+try{
+  mongoose.connect('mongodb://127.0.0.1:27018/epita', {
+    authSource: "admin",
+    user: "root",
+    pass: "example",
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+});
+
+console.log('Connected to DB !');
+
+} catch (error) {
+    console.log('Error connecting to MongoDB', error);
+}
+
 const todoRouter = require('./routes/todo');
+const messageRouter = require('./routes/messageRoute');
 
 // let bodyParser = require('body-parser');
 
@@ -35,9 +53,10 @@ app.get('/test', (request, response) => {
   // return response.status(200).json(`My name is ${name}`);
 });
 
-const PORT = 4500
 app.use('/todos', todoRouter);
+app.use('/messages', messageRouter);
 
+const PORT = 4500
 app.listen(4500, function() {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
