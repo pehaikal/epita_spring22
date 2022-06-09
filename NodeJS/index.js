@@ -20,15 +20,18 @@ console.log('Connected to DB !');
 
 const todoRouter = require('./routes/todo');
 const messageRouter = require('./routes/messageRoute');
+const userRouter = require('./routes/authRoute');
 
 // let bodyParser = require('body-parser');
 
 // Create a new express application instance
 const app = express();
 
+/*
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+*/
 
-/*app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));*/
 app.use(morgan('dev'));
 app.use(express.json());
 
@@ -55,6 +58,7 @@ app.get('/test', (request, response) => {
 
 app.use('/todos', todoRouter);
 app.use('/messages', messageRouter);
+app.use('/users', userRouter);
 
 const PORT = 4500
 app.listen(4500, function() {
