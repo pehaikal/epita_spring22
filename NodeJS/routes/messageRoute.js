@@ -25,13 +25,14 @@ Router.post('/', async (request, response) => {
     return response.status(200).json(messageObject)
 });
 
+// My solution:
 Router.put('/:id', async (request, response) => {
-    const {id} = request.params
-    const {message} = request.body.message
+    const id = request.params.id
+    const name = request.body.message.name
 
-    await messageModel.findByIdAndUpdate(id, message)
+    await messageModel.findByIdAndUpdate(id, {name: name}, {new: true})
 
-    return response.status(200).json(message)
+    return response.status(200).json({msg: "Message updated"})
 });
 
 /*
@@ -39,19 +40,16 @@ Router.put('/:messageId', async (req, res) => {
     const {name} = req.body.message
     const {messageId} = req.params
 
-    const message = await messageModel.findByIdAndUpdate(messageId, {
-        name: name
-    }, {
-        new: true
-    })
+    const message = await messageModel.findByIdAndUpdate(messageId, {name: name}, {new: true})
 
     return res.status(200).json(message)
 })
 */
 
+// My solution:
 Router.delete('/:id', async (request, response) => {
-    const {id} = request.params
-    const {message} = request.body
+    const id = request.params.id
+    const message = request.body.message
 
     await messageModel.findByIdAndRemove(id, message)
 

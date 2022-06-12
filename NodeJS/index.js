@@ -20,7 +20,7 @@ console.log('Connected to DB !');
 
 const todoRouter = require('./routes/todo');
 const messageRouter = require('./routes/messageRoute');
-const userRouter = require('./routes/authRoute');
+const authRouter = require('./routes/authRoute');
 
 // let bodyParser = require('body-parser');
 
@@ -58,7 +58,7 @@ app.get('/test', (request, response) => {
 
 app.use('/todos', todoRouter);
 app.use('/messages', messageRouter);
-app.use('/users', userRouter);
+app.use('/', authRouter);
 
 const PORT = 4500
 app.listen(4500, function() {
