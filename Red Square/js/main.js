@@ -9,6 +9,6 @@ square.addEventListener('click', function() {
   
   // Hide the redSquare for 2s and then reappearing it 
   /*if (square.style.visibility = 'hidden') {
-    setTimeout("square.style.visibility = 'visible'", 2000)
+    setTimeout("square.style.visibility = 'visible'", 1000)
   }*/
 })

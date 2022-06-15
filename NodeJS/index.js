@@ -1,13 +1,15 @@
 // framework to create API
+require('dotenv').config();
 const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
+const session = require('express-session');
 
 try{
-  mongoose.connect('mongodb://127.0.0.1:27018/epita', {
+  mongoose.connect(process.env.DB_URL, {
     authSource: "admin",
-    user: "root",
-    pass: "example",
+    user: process.env.DB_USER,
+    pass: process.env.DB_PASSWORD,
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
@@ -21,6 +23,7 @@ console.log('Connected to DB !');
 const todoRouter = require('./routes/todo');
 const messageRouter = require('./routes/messageRoute');
 const authRouter = require('./routes/authRoute');
+const userRouter = require('./routes/userRoute');
 
 // let bodyParser = require('body-parser');
 
@@ -31,6 +34,16 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 */
+
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: true,
+  cookie: { 
+    secure: process.env.SESSION_SECURE === 'true' ? true : false,
+    httpOnly: true 
+  }
+}))
 
 app.use(morgan('dev'));
 app.use(express.json());
@@ -59,6 +72,7 @@ app.get('/test', (request, response) => {
 app.use('/todos', todoRouter);
 app.use('/messages', messageRouter);
 app.use('/', authRouter);
+app.use('/users', userRouter);
 
 const PORT = 4500
 app.listen(4500, function() {
