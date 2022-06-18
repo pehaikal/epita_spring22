@@ -1,0 +1,16 @@
+#nav {
+    background-color: $primary-color;
+    display: flex;
+
+    a {
+        text-decoration: none;
+        padding: 10px;
+        display: block;
+        color: $secondary-color;
+
+        &:hover {
+            background-color: $secondary-color;
+            color: $primary-color;
+        }
+    }
+}

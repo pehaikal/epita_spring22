@@ -1,0 +1,16 @@
+#album{
+    text-align: center;
+    background-color: red;
+
+    b {
+        text-decoration: none;
+        padding: 10px;
+        display: block;
+        color: $secondary-color;
+
+        &:hover {
+            background-color: $secondary-color;
+            color: $primary-color;
+        }
+    }
+}
