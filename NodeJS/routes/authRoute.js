@@ -1,11 +1,12 @@
-const express = require('express')
-const bcrypt = require('bcrypt')
+const express = require('express') // Import express module
+const bcrypt = require('bcrypt') // Import bcrypt module
 
-const userModel = require('../models/userModel');
-const { Route } = require('express');
+const userModel = require('../models/userModel') // Import user model
+const { Route } = require('express') // Import Route class from express module
 
-const Router = express.Router();
+const Router = express.Router(); // Create a new Router instance
 
+// Register a new user
 Router.post('/register', async (request, response) => {
     const {email, password, username} = request.body
 
@@ -55,6 +56,7 @@ Router.post('/register', async (request, response) => {
  * if it's good send back the user
  * try to add session to express
  */
+// Middleware: Check if user is logged in
 Router.post('/login', async (request, response) => {
     const {email, password} = request.body
 
@@ -94,45 +96,41 @@ Router.post('/login', async (request, response) => {
     }
 })
 
-Router.get('/me', async(request, response) => {
+/* //////////////////////////////////////////////////////////////////////////////// */
 
-    if (request.session.user) {
+// Professor's code:
+/*
+Router.post('/login', async (req, res) => {
+    const {email, password} = req.body
 
-        const user = await userModel.findById(request.session.user._id, {
-            'password': 0
-        })
+    if ( (email && email !== "") && (password && password !== "")) {
+        try {
+            const user = await userModel.findOne({'email': email})
 
-        if (!user) {
-            return response.status(500).json({"msg": "You are not authenticated !"})
+            if (!user) {
+                return res.status(500).json({'msg': 'User not found !'})
+            }
+
+            if (!user.active) {
+                return res.status(500).json({'msg': 'User not active !'})
+            }
+        
+            if (!bcrypt.compareSync(password, user.password)) {
+                return res.status(500).json({'msg': "Email or Password don't match !"})
+            }
+
+            req.session.user = {
+                "_id": user._id
+            }
+
+            return res.status(200).json({'msg': 'User identified !'})
+        } catch (error) {
+            return res.status(500).json({'msg': error.message})
         }
-
-        if (!user.active) {
-            return response.status(500).json({'msg': 'User not active !'})
-        }
-
-        return response.status(200).json(user)
+    } else {
+        return res.status(500).json({"msg": "Email and password are required !"})
     }
-
-    return response.status(500).json({"msg": "You are not authenticated !"})
 })
-
-Router.get('/users/search/:searchBy', async(request, response) => {
-    const {searchBy} = request.params
-
-    const users = await userModel.find({
-        'username': {
-            '$regex': searchBy,
-            '$options': 'i'
-        }
-    }, {
-        'password': 0
-    })
-
-    if (!users) {
-        return response.status(500).json({"msg": "No users found!"})
-    }
-
-    return response.status(200).json(users)
-})
+*/
 
 module.exports = Router;
