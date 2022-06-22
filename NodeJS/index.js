@@ -4,6 +4,7 @@ const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 const session = require('express-session');
+const cors = require('cors');
 
 try{
   mongoose.connect(process.env.DB_URL, {
@@ -29,7 +30,7 @@ const userRouter = require('./routes/userRoute');
 
 // Create a new express application instance
 const app = express();
-
+app.use(cors());
 /*
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));

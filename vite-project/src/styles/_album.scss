@@ -2,15 +2,19 @@
     text-align: center;
     background-color: red;
 
-    b {
-        text-decoration: none;
-        padding: 10px;
-        display: block;
-        color: $secondary-color;
+    .album {
+        border: 1px dotted gainsboro;
+        margin: 20px 0;
+        padding: 30px;
+        background-color: aliceblue;
+        border-radius: 20px;
+        box-shadow: 5px 5px 5px gray;
 
         &:hover {
             background-color: $secondary-color;
             color: $primary-color;
+            cursor: pointer;
+            font-weight: 900;
         }
     }
 }

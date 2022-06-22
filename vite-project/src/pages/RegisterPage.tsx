@@ -1,46 +1,75 @@
-import React, {useState} from 'react'
+import {ChangeEvent, FormEvent, useState} from 'react'
+import { useNavigate, Link} from 'react-router-dom'
 
+import { registerParams } from '../types/auth'
+import { register } from '../services/auth'
 
 function RegisterPage() {
-    const [form, setForm] = useState({
+
+    let navigate = useNavigate()
+    
+    const [form, setForm] = useState <registerParams>({
         username:"",
-        email:""
+        email:"",
+        password:""
     })
 
-    const onChangeHandler = (event: any) => {
-        setForm({
-            ...form, 
-            [event.target.name]: event.target.value
-        })
+    const onChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
+        const {name, value}: {name: string, value: string}= event.target
+        setForm({...form, [event.target.name]: event.target.value})
     }
 
-    const onSubmitHandler = (event: any) => {
+    const onSubmitHandler = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault()
-        console.log(form)
+        if(await register(form)) {
+            navigate('/login')
+        }
+        // console.log(form)
     }
     
     return (<>
-        <div>RegisterPage</div>
-        <form onSubmit={onSubmitHandler}>
-            <label>Username</label>
+    <form onSubmit={onSubmitHandler}>
+            
+    <h1>Register your Account</h1>
 
+        <div className='form-row'>
+            <label>Username</label>
             <input 
             type="text" 
             name="username" 
             value={form.username} 
             onChange={onChangeHandler}
             />
-            
+        </div>
+
+        <div className='form-row'>
             <label>Email</label>
             <input 
-            type="text" 
+            type="email" 
             name="email" 
             value={form.email} 
             onChange={onChangeHandler}
             />
+        </div>
 
-            <button type="submit">Submit</button>
-        </form>
+        <div className='form-row'>
+            <label>Password</label>
+            <input 
+            type="password" 
+            name="password" 
+            value={form.password} 
+            onChange={onChangeHandler}
+            />
+        </div>
+
+        <div className='form-row'>
+            <button type="submit">Register</button>
+        </div>
+
+        <div className="form-row">
+            <Link to="/login">Already have an account !</Link>
+        </div>
+    </form>
     </>)
 }
 

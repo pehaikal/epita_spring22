@@ -6,11 +6,13 @@
         text-decoration: none;
         padding: 10px;
         display: block;
-        color: $secondary-color;
+        color: red;
 
         &:hover {
-            background-color: $secondary-color;
-            color: $primary-color;
+            background-color: lightcoral;
+            color: blue;
+            font-size: large;
+            font-weight: bolder;
         }
     }
 }
