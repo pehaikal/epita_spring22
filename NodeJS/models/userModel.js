@@ -23,7 +23,9 @@ const userSchema = new mongoose.Schema({
     active: {
         type: Boolean,
         default: true // default: true -> user is active by default
-    }
+    },
+
+    messages: [mongoose.Types.ObjectId]
 
 }, {
     timestamps: {

@@ -5,6 +5,10 @@ import HomePage from './pages/HomePage';
 import ResourcesPage from './pages/ResourcesPage';
 import RegisterPage from './pages/RegisterPage';
 import LoginPage from './pages/LoginPage';
+import MessagesPage from './pages/MessagesPage';
+import Default from './layouts/Default';
+import Auth from './layouts/Auth';
+
 import { AuthContext } from './contexts'
 
 const App = () =>{
@@ -17,23 +21,14 @@ const App = () =>{
         <Greetings firstname="Pierre" lastname="Haikal" age={age} />
         <Animals /> */}
         
-        <div id="nav">
-            <Link to="/">Home</Link>
-            <Link to="/album">Ressources</Link>
-            <Link to="/register">Register</Link>
-            <Link to="/login">Login</Link>
-            {auth.name}
-        </div>
-
-        <div className='container'>
-            <Routes>
-                <Route path="/" element={<HomePage />} />
-                <Route path="/album" element={<ResourcesPage />} />
-                <Route path="/register" element={<RegisterPage />} />
-                <Route path="/login" element={<LoginPage />} />
-            </Routes>
-        </div>
-    </>)
+        <Routes>
+            <Route path="/" element={<Default><HomePage /></Default>} />
+            <Route path="/album" element={<Default><ResourcesPage /></Default>} />
+            <Route path="/messages" element={<Default><MessagesPage /></Default>} />
+            <Route path="/register" element={<Auth><RegisterPage /></Auth>} />
+            <Route path="/login" element={<Auth><LoginPage /></Auth>} />
+        </Routes>
+    </>);
 }
 
 export default App

@@ -25,7 +25,7 @@ const ResourcesComponent = () => {
       {isLoading && <div>please wait, data is loading...</div>}
 
       {!isLoading && <div>
-        {albums.map((album:Album, index:number) => <div key={`albums-${index}`}>
+        {albums.map((album:Album, index:number) => <div className='album' key={`albums-${index}`}>
           {album.title}
           </div>)}
       </div>}

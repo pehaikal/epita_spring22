@@ -1,6 +1,5 @@
 #album{
     text-align: center;
-    background-color: red;
 
     .album {
         border: 1px dotted gainsboro;
@@ -11,10 +10,28 @@
         box-shadow: 5px 5px 5px gray;
 
         &:hover {
-            background-color: $secondary-color;
-            color: $primary-color;
+            background-color: red;
+            color: black;
             cursor: pointer;
             font-weight: 900;
         }
     }
 }
+
+// #album {
+//     .album{
+//         border: 1px dotted gainsboro;
+//         margin: 20px 0;
+//         padding: 30px;
+//         background-color: aliceblue;
+//         border-radius: 20px;
+//         box-shadow: 5px 5px 5px gray;
+
+//         &:hover {
+//             background-color: $primary-color;
+//             color: $secondary-color;
+//             cursor: pointer;
+//             font-weight: 900;
+//         }
+//     }
+// }

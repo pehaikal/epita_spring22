@@ -4,7 +4,7 @@ const messageModel = require('../models/messageModel')
 const Router = express.Router()
 
 Router.get('/', async (request, response) => {
-    messages = await messageModel.find({})
+    messages = await messageModel.find({}).populate('user')
     
     return response.status(200).json(messages)
 });
@@ -18,6 +18,8 @@ Router.get('/:messageId', async (req, res) => {
 
 Router.post('/', async (request, response) => {
     const {message} = request.body
+    message.user = request.session.user._id
+
     const messageObject = new messageModel(message)
     
     await messageObject.save()
