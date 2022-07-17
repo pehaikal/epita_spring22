@@ -5,7 +5,6 @@ const userSchema = new mongoose.Schema({
         type: String,
         trim: true
     },
-
     email: {
         type: String,
         unique: true, // unique: true -> email must be unique
@@ -13,20 +12,19 @@ const userSchema = new mongoose.Schema({
         lowercase: true, // lowercase: true -> convert to lowercase
         required: "Email address is required !"
     },
-
     password: {
         type: String,
         trim: true,
         required: "Password is required !"
     },
-
     active: {
         type: Boolean,
         default: true // default: true -> user is active by default
     },
-
-    messages: [mongoose.Types.ObjectId]
-
+    messages: [{
+        type: mongoose.Types.ObjectId,
+        ref: 'Message'
+    }]
 }, {
     timestamps: {
         createdAt: 'created_at',

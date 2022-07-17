@@ -11,7 +11,9 @@ const Auth: FC<{ children: ReactNode }> = ({children}) => {
         borderRadius: '15px',
         border: '2px solid black',
         marginTop: '20px'
-    }}>{children}</div>
+    }}>
+      {children}
+    </div>
   )
 }
 

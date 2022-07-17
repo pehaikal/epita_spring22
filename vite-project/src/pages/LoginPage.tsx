@@ -1,4 +1,4 @@
-import React, {useState, ChangeEvent, FormEvent, useContext} from 'react'
+import React, { useState, ChangeEvent, FormEvent, useContext } from 'react'
 import { useNavigate, Link } from "react-router-dom"
 
 import { login } from '../services/auth'
@@ -19,9 +19,9 @@ const LoginPage = () => {
   const [msg, setMsg] = useState('')
 
   const onChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
-    const {name, value}: {name: string, value: string} = event.target 
+    const { name, value }: { name: string, value: string } = event.target 
 
-    setForm({...form, [name]: value})
+    setForm({ ...form, [name]: value })
   }
 
   const onSubmitHandler = async (event:FormEvent<HTMLFormElement>) => {
@@ -54,8 +54,8 @@ const LoginPage = () => {
             <input 
                 type="email"
                 name="email"
-                value={form.email}
-                onChange={onChangeHandler}/>
+                value={ form.email }
+                onChange={ onChangeHandler }/>
         </div>
 
         <div className="form-row">
@@ -63,8 +63,8 @@ const LoginPage = () => {
             <input 
                 type="password"
                 name="password"
-                value={form.password}
-                onChange={onChangeHandler}/>
+                value={ form.password }
+                onChange={ onChangeHandler }/>
         </div>
 
         <div className="form-row">

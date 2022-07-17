@@ -96,30 +96,36 @@ Router.post('/login', async (request, response) => {
     }
 })
 
-Router.get('/me', async (req, res) => {
-    if (req.session.user) {
 
-        const user = await userModel.findById(req.session.user._id, {
+Router.get('/me', async (request, response) => {
+    if (request.session.user) {
+
+        const user = await userModel.findById(request.session.user._id, {
             'password': 0
         }).populate('messages')
 
         if (!user) {
-            return res.status(500).json({"msg": "You aren't authenticated !"})
+            return response.status(500).json({"msg": "You are not authenticated !"})
         }
 
         if (!user.active) {
-            return res.status(500).json({'msg': 'User not active !'})
+            return response.status(500).json({'msg': 'User not active !'})
         }
 
-        return res.status(200).json(user)
+        return response.status(200).json(user)
     }
 
-    return res.status(500).json({"msg": "You are not authenticated !"})
+    return response.status(500).json({"msg": "You are not authenticated !"})
 })
 
-Router. get('/logout', (request, response) => {
-    request.session.destroy()
-    return response.status(200).json({"msg": "Logout successful!"})
+
+// Logout
+Router.get('/logout', (request, response) => {
+    if (request.session.user) {
+        delete response.session
+    }
+
+    return response.status(200).json({'msg': 'Logout Successfully !'})
 })
 
 /* //////////////////////////////////////////////////////////////////////////////// */

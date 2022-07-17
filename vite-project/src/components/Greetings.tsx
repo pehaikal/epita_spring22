@@ -7,7 +7,7 @@ type GreetingsParams = {
     age ?: number // ? means optional
 }
 
-// export default function Greetings(props: GreetingsParams) {
+// export default function Greetings
 function Greetings({ firstname, lastname, age=5}: GreetingsParams) {
   return (
     <div>Hello {firstname} {lastname} {age+10}!</div>

@@ -1,4 +1,4 @@
-import {ChangeEvent, FormEvent, useState} from 'react'
+import { ChangeEvent, FormEvent, useState } from 'react'
 import { useNavigate, Link} from 'react-router-dom'
 
 import { registerParams } from '../types/auth'
@@ -15,8 +15,8 @@ function RegisterPage() {
     })
 
     const onChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
-        const {name, value}: {name: string, value: string}= event.target
-        setForm({...form, [event.target.name]: event.target.value})
+        const { name, value }: { name: string, value: string }= event.target
+        setForm({ ...form, [event.target.name]: event.target.value })
     }
 
     const onSubmitHandler = async (event: FormEvent<HTMLFormElement>) => {
@@ -28,7 +28,7 @@ function RegisterPage() {
     }
     
     return (<>
-    <form onSubmit={onSubmitHandler}>
+    <form onSubmit={ onSubmitHandler }>
             
     <h1>Register your Account</h1>
 
@@ -37,8 +37,8 @@ function RegisterPage() {
             <input 
             type="text" 
             name="username" 
-            value={form.username} 
-            onChange={onChangeHandler}
+            value={ form.username } 
+            onChange={ onChangeHandler }
             />
         </div>
 
@@ -47,8 +47,8 @@ function RegisterPage() {
             <input 
             type="email" 
             name="email" 
-            value={form.email} 
-            onChange={onChangeHandler}
+            value={ form.email } 
+            onChange={ onChangeHandler }
             />
         </div>
 
@@ -57,8 +57,8 @@ function RegisterPage() {
             <input 
             type="password" 
             name="password" 
-            value={form.password} 
-            onChange={onChangeHandler}
+            value={ form.password } 
+            onChange={ onChangeHandler }
             />
         </div>
 

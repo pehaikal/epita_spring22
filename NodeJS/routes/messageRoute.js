@@ -12,7 +12,7 @@ Router.get('/', async (request, response) => {
 Router.get('/:messageId', async (req, res) => {
     const {messageId} = req.params
 
-    message = await messageModel.findOne({_id: messageId})
+    message = await messageModel.findOne({_id: messageId}).populate('user')
     return res.status(200).json(message)
 })
 
@@ -34,7 +34,8 @@ Router.put('/:id', async (request, response) => {
 
     await messageModel.findByIdAndUpdate(id, {name: name}, {new: true})
 
-    return response.status(200).json({msg: "Message updated"})
+    // return response.status(200).json(message)
+    return response.status(200).json({msg: "Message updated successfully !"})
 });
 
 /*
@@ -55,7 +56,7 @@ Router.delete('/:id', async (request, response) => {
 
     await messageModel.findByIdAndRemove(id, message)
 
-    return response.status(200).json({"msg": "Message deleted"})
+    return response.status(200).json({"msg": "Message deleted successfully !"})
 });
 
 /*
